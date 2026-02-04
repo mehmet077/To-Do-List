@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <header class="header">
+        <h1>🖤 Dark To-Do List</h1>
+        <p>Profesyonel görev yönetimi</p>
+    </header>
+
+    <section class="stats">
+        <div><strong id="total">0</strong><span>Toplam</span></div>
+        <div><strong id="active">0</strong><span>Aktif</span></div>
+        <div><strong id="done">0</strong><span>Bitti</span></div>
+    </section>
+
+    <section class="form">
+        <input id="title" placeholder="Görev başlığı">
+        <textarea id="desc" placeholder="Açıklama"></textarea>
+
+        <div class="row">
+            <select id="priority">
+                <option value="low">Düşük</option>
+                <option value="medium">Orta</option>
+                <option value="high">Yüksek</option>
+            </select>
+            <input type="date" id="date">
+        </div>
+
+        <button id="add">Görev Ekle</button>
+    </section>
+
+    <section class="toolbar">
+        <input id="search" placeholder="Ara...">
+        <div class="filters">
+            <button data-filter="all">Tümü</button>
+            <button data-filter="active">Aktif</button>
+            <button data-filter="done">Biten</button>
+        </div>
+    </section>
+
+    <ul id="list"></ul>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
