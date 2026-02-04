@@ -61,23 +61,36 @@ document.addEventListener("DOMContentLoaded", () => {
             .filter(t =>
                 t.title.toLowerCase().includes(search.value.toLowerCase())
             )
-            .forEach(task => {
+            .forEach((task, index) => {
                 const li = document.createElement("li");
                 if (task.done) li.classList.add("done");
 
                 li.innerHTML = `
-                    <div>
+                    <div class="task-content">
                         <strong>${task.title}</strong><br>
                         <small>${task.desc || ""}</small><br>
                         <small>${formatDate(task.date)}</small>
                     </div>
-                    <span class="badge ${task.priority}">
-                        ${task.priority}
-                    </span>
+
+                    <div class="actions">
+                        <span class="badge ${task.priority}">
+                            ${task.priority}
+                        </span>
+                        <button class="delete">🗑️</button>
+                    </div>
                 `;
 
-                li.onclick = () => {
+                /* DONE (sadece içerik alanına tıklayınca) */
+                li.querySelector(".task-content").onclick = () => {
                     task.done = !task.done;
+                    save();
+                    render();
+                };
+
+                /* DELETE */
+                li.querySelector(".delete").onclick = (e) => {
+                    e.stopPropagation();
+                    tasks.splice(index, 1);
                     save();
                     render();
                 };
